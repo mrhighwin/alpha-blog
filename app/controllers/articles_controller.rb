@@ -28,6 +28,16 @@ class ArticlesController < ApplicationController
 
 	end
 
+	def destroy
+		@article = Article.find(params[:id])
+		if(@article.destroy)
+			flash[:notice] = "article was successfully created"
+			redirect_to articles_path
+		else
+			render 'new'
+		end
+	end
+
 	def show
 		@article = Article.find(params[:id])
 	end
